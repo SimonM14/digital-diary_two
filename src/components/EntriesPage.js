@@ -1,57 +1,41 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDropzone } from 'react-dropzone';
 
 const EntriesPage = () => {
-  const [entries, setEntries] = useState([]);
-  const [entryText, setEntryText] = useState('');
-  const [entryImages, setEntryImages] = useState([]);
+  // State to manage text entries
+  const [textEntry, setTextEntry] = useState('');
+  
+  // State to manage photo uploads
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const onDrop = (acceptedFiles) => {
-    setEntryImages([...entryImages, ...acceptedFiles]);
+  const handleTextChange = (event) => {
+    setTextEntry(event.target.value);
   };
 
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    accept: 'image/*',
-  });
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedImage(file);
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newEntry = { text: entryText, images: entryImages };
-    setEntries([...entries, newEntry]);
-    setEntryText('');
-    setEntryImages([]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle saving the text entry and photo upload
+    console.log('Text Entry:', textEntry);
+    console.log('Selected Image:', selectedImage);
+    // You can send this data to a server or handle it as needed
   };
 
   return (
-    <div>
+    <div className="entries-page">
       <h1>Entries</h1>
-      <Link to="/">Back to Welcome Page</Link>
       <form onSubmit={handleSubmit}>
         <textarea
-          value={entryText}
-          onChange={(e) => setEntryText(e.target.value)}
-          placeholder="Write your entry..."
+          placeholder="Write your diary entry here..."
+          value={textEntry}
+          onChange={handleTextChange}
         />
-        <div {...getRootProps()} className="dropzone">
-          <input {...getInputProps()} />
-          <p>Drag 'n' drop some images here, or click to select files</p>
-        </div>
-        <button type="submit">Add Entry</button>
+        <input type="file" accept="image/*" onChange={handleImageChange} />
+        <button type="submit">Save Entry</button>
       </form>
-      <div className="entry-list">
-        {entries.map((entry, index) => (
-          <div key={index}>
-            <p>{entry.text}</p>
-            <div className="image-list">
-              {entry.images.map((image, imageIndex) => (
-                <img key={imageIndex} src={URL.createObjectURL(image)} alt={`Entry ${index} Image ${imageIndex}`} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

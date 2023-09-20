@@ -1,25 +1,28 @@
-import React, { useState } from "react";
-import DiaryList from "./components/DiaryList";
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import WelcomePage from "./WelcomePage";
+import EntriesPage from "./EntriesPage";
 
-function App() {
-  const [entries, setEntries] = useState([]);
-
-  const addEntry = (title, content) => {
-    const newEntry = { title, content };
-    setEntries([...entries, newEntry]);
-  };
-
+const App = () => {
   return (
-    <div className="App">
-      <h1>Digital Diary</h1>
-      <DiaryList entries={entries} />
-      <button
-        onClick={() => addEntry("New Entry", "This is a new diary entry.")}
-      >
-        Add Entry
-      </button>
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/entries">Entries</Link>
+            </li>
+          </ul>
+        </nav>
+        <hr />
+        <Route exact path="/" component={WelcomePage} />
+        <Route path="/entries" component={EntriesPage} />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
