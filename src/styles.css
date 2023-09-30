@@ -1,0 +1,14 @@
+.welcome-page{
+    background-color:honeydew;
+    position: fixed; /* or "position: absolute;" depending on your requirements */
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.content{
+    position:relative;
+    width: 60%;
+
+
+}
