@@ -1,10 +1,10 @@
 import React from "react";
-import Footer from "./Footer";
+import Footer from "../components/Footer";
 
 const WelcomePage = () => {
   return (
     <div className="welcome-page">
-      <h1 style={{ fontSize: 40, color: "aqua" }}>Welcome to Your Digital Diary</h1>
+      <h1 style={{ fontSize: 40, color: "", textAlign: "center" }}>Welcome to Your Digital Diary</h1>
       <div className="content" style={{ fontSize: 20, fontFamily: ""}}>
       <br />
         <p>
