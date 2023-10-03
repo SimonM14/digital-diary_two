@@ -6,33 +6,31 @@ import "./styles.css";
 import { Navbar, NavbarBrand } from "react-bootstrap";
 import About from "./pages/About";
 import MainContent from "./components/Mainc";
+import { Profile } from "./pages/Profile";
+
 
 const App = () => {
   return (
     <div className="">
-    <Router>
-      <Navbar>
-        <NavbarBrand style={{ fontSize: 26, color: "red", fontStyle: "italic" }}>
-          Mi-<t style={{ color: "black" }}>Thoughts</t>
-        </NavbarBrand>
-        <nav className="nav">
-          <Link to="/" style={{}}>
-            Home
-          </Link>
-          <Link to="/entries">Entries</Link>
-          <Link to="/About">About</Link>
-        </nav>
-      </Navbar>
-      <hr />
-      <div className="App">
-        <Routes>
-          <Route exact path="/" element={<WelcomePage />} />
-          <Route path="/entries" element={<EntriesPage />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/main" element={<MainContent />} />
-        </Routes>
-      </div>
-    </Router>
+      <Router>
+        <Navbar>
+          <NavbarBrand
+            style={{ fontSize: 26, color: "red", fontStyle: "italic" }}
+          >
+            Mi-<t style={{ color: "black" }}>Thoughts</t>
+          </NavbarBrand>
+        </Navbar>
+        <hr />
+        <div className="App">
+          <Routes>
+            <Route exact path="/" element={<WelcomePage />} />
+            <Route path="/main" element={<MainContent />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/entries" element={<EntriesPage />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 };
