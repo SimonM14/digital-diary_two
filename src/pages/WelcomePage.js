@@ -4,7 +4,9 @@ import LogSin from "./LogSinForm";
 
 const WelcomePage = () => {
   return (
+    
     <span>
+      <hr />
       <h1 style={{ fontSize: 40, color: "", textAlign: "center" }}>
         Welcome to Your Digital Diary
       </h1>

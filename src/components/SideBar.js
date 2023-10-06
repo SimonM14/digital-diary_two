@@ -48,7 +48,7 @@ const showSidebar = () => setSidebar(!sidebar);
 
 return (
 	<>
-	<IconContext.Provider value={{ color: "#fff" }}>
+	<IconContext.Provider value={{ color: "" }}>
 		<Nav>
 		<NavIcon to="#">
 			<FaIcons.FaBars onClick={showSidebar} />
@@ -56,9 +56,9 @@ return (
 		<h1
 			style={{ textAlign: "center",
 					marginLeft: "200px",
-					color: "green" }}
+					color: "aqua" }}
 		>
-			Mi-Thoughts
+			Dashboard
 		</h1>
 		</Nav>
 		<SidebarNav sidebar={sidebar}>

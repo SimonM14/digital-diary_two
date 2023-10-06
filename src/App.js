@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage";
 import EntriesPage from "./pages/EntriesPage";
 import "./styles.css";
@@ -7,7 +7,8 @@ import { Navbar, NavbarBrand } from "react-bootstrap";
 import About from "./pages/About";
 import MainContent from "./components/Mainc";
 import { Profile } from "./pages/Profile";
-
+import Contact from "./pages/ContactUs";
+import Support from "./pages/Support";
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
             Mi-<t style={{ color: "black" }}>Thoughts</t>
           </NavbarBrand>
         </Navbar>
-        <hr />
+
         <div className="App">
           <Routes>
             <Route exact path="/" element={<WelcomePage />} />
@@ -28,6 +29,8 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/entries" element={<EntriesPage />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/support" element={<Support />} />
           </Routes>
         </div>
       </Router>
