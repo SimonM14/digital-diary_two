@@ -16,13 +16,18 @@ const App = () => {
       <Router>
         <Navbar>
           <NavbarBrand
-            style={{ fontSize: 26, color: "red", fontStyle: "italic" }}
+            style={{
+              fontSize: 20,
+              color: "red",
+              fontStyle: "italic",
+              textAlign: "center",
+            }}
           >
             Mi-<t style={{ color: "black" }}>Thoughts</t>
           </NavbarBrand>
         </Navbar>
 
-        <div className="App">
+        <div >
           <Routes>
             <Route exact path="/" element={<WelcomePage />} />
             <Route path="/main" element={<MainContent />} />

@@ -56,7 +56,7 @@ return (
 		<h1
 			style={{ textAlign: "center",
 					marginLeft: "200px",
-					color: "aqua" }}
+					background: "linear-gradient(#00abb7, #0049a8)" }}
 		>
 			Dashboard
 		</h1>

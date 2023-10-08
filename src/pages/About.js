@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div>
-      <h1>What about us?</h1>
+      <h1 style={{ textAlign: "center", fontSize: 40,}}>What about us?</h1>
       <div className="about">
         In a world that is becoming increasingly digitalized, where our lives
         are entwined with screens and devices, it is only natural that we seek

@@ -1,41 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import Dashboard from "./Entriesdash";
+import DiaryEntries from "./DiaryEntries"; // Import the new component
 
 const EntriesPage = () => {
-  // State to manage text entries
-  const [textEntry, setTextEntry] = useState('');
-  
-  // State to manage photo uploads
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [textEntry, setTextEntry] = useState("");
+  const [entries, setEntries] = useState([]); // State to manage diary entries
 
   const handleTextChange = (event) => {
     setTextEntry(event.target.value);
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedImage(file);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Handle saving the text entry and photo upload
-    console.log('Text Entry:', textEntry);
-    console.log('Selected Image:', selectedImage);
-    // You can send this data to a server or handle it as needed
+  const handleSaveEntry = () => {
+    // Handle saving the diary entry
+    if (textEntry.trim() !== "") {
+      setEntries([...entries, textEntry]); // Add the new entry to the list
+      setTextEntry(""); // Clear the input field
+    }
   };
 
   return (
-    <div className="entries-page">
-      <h1>Entries</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="dashboard">
+      <Dashboard />
+
+      <div className="entries-page">
+        <h1>
+          Whats on your mind today, <figure id="happy"></figure>
+        </h1>
         <textarea
           placeholder="Write your diary entry here..."
           value={textEntry}
           onChange={handleTextChange}
         />
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-        <button type="submit">Save Entry</button>
-      </form>
+        <button onClick={handleSaveEntry}>Save Entry</button>
+
+        <input type="file" />
+      </div>
+
+      {/* Render the DiaryEntries component on the right */}
+      <DiaryEntries entries={entries} />
     </div>
   );
 };
